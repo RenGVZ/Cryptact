@@ -8,10 +8,10 @@ type HeaderDescriptionProps = {
 const HeaderDescription = ({ content }: HeaderDescriptionProps) => {
   return (
     <div className="flex flex-col items-start self-stretch">
-      <div className="flex justify-between items-center self-stretch">
+      <div className="flex flex-col lg:flex-row justify-between items-start self-stretch">
         <div className="flex items-center gap-2">
           <UserCircleGear size={26} color="#4299E1" weight="duotone" />
-          <h1 className="text-Text/Main text-xl font-semibold leading-26">
+          <h1 className="text-Text/Main text-lg lg:text-xl font-semibold leading-26">
             {content.title}
           </h1>
         </div>

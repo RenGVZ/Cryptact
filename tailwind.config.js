@@ -30,6 +30,7 @@ export default {
       },
       colors: {
         "Neutral/500": "#DEE1E3",
+        "Primary/100": "#D9EBF9",
       },
       padding: {
         main: "60px",
@@ -38,10 +39,14 @@ export default {
         18: "18px",
         21: "21px",
         26: "26px",
-        42:  "42px",
+        42: "42px",
       },
       borderRadius: {
         4: "4px",
+      },
+      boxShadow: {
+        container:
+          "0px 1px 2px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06)",
       },
     },
     fontFamily: {
