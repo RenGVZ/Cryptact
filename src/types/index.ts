@@ -7,6 +7,7 @@ export type ContentType = {
   title: string
   subtitle: string
   icon: string
+  isDisabled: boolean
   steps: StepType[]
 }
 
@@ -17,7 +18,7 @@ export type StepType = {
   info?: string
   content: string
   buttonText: string
-  isSelected: boolean
+  isComplete: boolean
 }
 
 export interface MenuItemsInterface {

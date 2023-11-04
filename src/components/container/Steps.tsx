@@ -1,30 +1,55 @@
-import { CheckCircle, ArrowRight, Info } from "@phosphor-icons/react"
+import {
+  CheckCircle,
+  CircleDashed,
+  ArrowRight,
+  Info,
+} from "@phosphor-icons/react"
 import { StepType } from "src/types"
 
 type StepsProps = {
   steps: StepType[]
+  isCollapsed: boolean
+  isDisabled: boolean
 }
 
-type StepProps = {
-  step: StepType
-}
-
-const Steps = ({ steps }: StepsProps) => {
+const Steps = ({ steps, isCollapsed, isDisabled }: StepsProps) => {
   return (
-    <div className="flex flex-col items-start gap-4">
-      {steps.map((step) => (
-        <Step key={step.id} step={step} />
-      ))}
+    <div
+      className={`${
+        isCollapsed ? "opacity-0 mt-0" : "opacity-100 mt-8"
+      } transition-opacity duration-500 flex flex-col items-start gap-4`}
+    >
+      {!isCollapsed && (
+        <>
+          {steps.map((step) => (
+            <div
+              key={step.id}
+              className={`${isDisabled ? "opacity-100" : "opacity-50"}`}
+            >
+              <Step step={step} isCollapsed={isCollapsed} />
+            </div>
+          ))}
+        </>
+      )}
     </div>
   )
 }
 
+type StepProps = {
+  step: StepType
+  isCollapsed: boolean
+}
+
 const Step = ({ step }: StepProps) => {
   return (
-    <div className="flex flex-col lg:flex-row items-center border border-Neutral/500 rounded-lg gap-4 lg:gap-[77px] p-4">
+    <div className="self-stretch justify-between flex flex-col lg:flex-row items-center border border-Neutral/500 rounded-lg gap-4 lg:gap-[77px] p-4">
       <div className="flex items-start gap-2">
         <div>
-          <CheckCircle size={24} color="#38c97c" weight="fill" />
+          {step.isComplete ? (
+            <CheckCircle size={24} color="#38c97c" weight="fill" />
+          ) : (
+            <CircleDashed size={24} color="#a7aeb4" />
+          )}
         </div>
         <div className="flex flex-col items-start">
           <div className="flex flex-col pb-0 items-start gap-2">
