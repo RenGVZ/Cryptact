@@ -19,6 +19,7 @@ export type StepType = {
   content: string
   buttonText: string
   isComplete: boolean
+  isActive: boolean
 }
 
 export interface MenuItemsInterface {

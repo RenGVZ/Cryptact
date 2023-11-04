@@ -22,12 +22,7 @@ const Steps = ({ steps, isCollapsed, isDisabled }: StepsProps) => {
       {!isCollapsed && (
         <>
           {steps.map((step) => (
-            <div
-              key={step.id}
-              className={`${
-                isDisabled ? "opacity-50" : "opacity-100"
-              } self-stretch`}
-            >
+            <div key={step.id} className="self-stretch">
               <Step step={step} isDisabled={isDisabled} />
             </div>
           ))}
@@ -46,13 +41,13 @@ const Step = ({ step, isDisabled }: StepProps) => {
   return (
     <div
       className={`${
-        !isDisabled && !step.isComplete
+        !isDisabled && !step.isComplete && step.isActive
           ? "border-Primary/500 shadow-active"
           : "border-Neutral/500"
       } flex flex-col lg:flex-row justify-between items-center border rounded-lg gap-4 lg:gap-[77px] p-4`}
     >
       <div className="flex items-start gap-2">
-        <div>
+        <div className={`${isDisabled && "opacity-50"}`}>
           {step.isComplete ? (
             <CheckCircle size={24} color="#38c97c" weight="fill" />
           ) : (
@@ -60,7 +55,11 @@ const Step = ({ step, isDisabled }: StepProps) => {
           )}
         </div>
         <div className="flex flex-col items-start">
-          <div className="flex flex-col pb-0 items-start gap-2">
+          <div
+            className={`${
+              isDisabled && "opacity-50"
+            } flex flex-col pb-0 items-start gap-2`}
+          >
             <h1 className="text-Text/Main font-semibold leading-21">
               {step.title}
             </h1>
@@ -68,12 +67,16 @@ const Step = ({ step, isDisabled }: StepProps) => {
             {step.badge && <StepBadge badge={step.badge} />}
 
             <div className="text-Grey/800 text-sm">{step.content}</div>
-
-            {step.info && <StepInfo info={step.info} />}
           </div>
+          {step.info && <StepInfo info={step.info} />}
         </div>
       </div>
-      <button className="flex justify-center items-center h-8 min-w-fit p-3 gap-2 rounded-4 bg-Primary/500">
+      <button
+        className={`${
+          isDisabled && "opacity-50"
+        } flex justify-center items-center h-8 min-w-fit p-3 gap-2 rounded-4 bg-Primary/500`}
+        disabled={isDisabled}
+      >
         <span className="text-white text-sm font-semibold leading-18">
           {step.buttonText}
         </span>
@@ -95,7 +98,7 @@ const StepBadge = ({ badge }: { badge: string }) => {
 
 const StepInfo = ({ info }: { info: string }) => {
   return (
-    <div className="flex items-start pt-2 gap-1">
+    <div className="flex items-start pt-4 gap-1">
       <Info size={16} color="#0276ef" />
       <p className="text-Grey/800 text-xs">{info}</p>
     </div>
