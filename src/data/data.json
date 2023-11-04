@@ -4,7 +4,7 @@
     "title": "取引の情報を入力しましょう",
     "subtitle": "仮想通貨の損益計算には過去すべての取引履歴が必要になります。",
     "icon": "UserCircleGear",
-    "isDisabled": true,
+    "isDisabled": false,
     "steps": [
       {
         "id": 0,
@@ -28,7 +28,7 @@
     "title": "足りていない情報を追加しましょう",
     "subtitle": "情報が不足していると計算が完了しません。必ず追加してください。",
     "icon": "Gear",
-    "isDisabled": false,
+    "isDisabled": true,
     "steps": [
       {
         "id": 0,
@@ -52,7 +52,7 @@
     "title": "計算結果を確認しましょう",
     "subtitle": "計算結果の最終的なチェックを行って確定申告に必要な情報を確認しましょう。最後にデータをダウンロードできます。",
     "icon": "ListChecks",
-    "isDisabled": false,
+    "isDisabled": true,
     "steps": []
   }
 ]

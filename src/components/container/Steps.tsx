@@ -24,9 +24,11 @@ const Steps = ({ steps, isCollapsed, isDisabled }: StepsProps) => {
           {steps.map((step) => (
             <div
               key={step.id}
-              className={`${isDisabled ? "opacity-100" : "opacity-50"}`}
+              className={`${
+                isDisabled ? "opacity-50" : "opacity-100"
+              } self-stretch`}
             >
-              <Step step={step} isCollapsed={isCollapsed} />
+              <Step step={step} isDisabled={isDisabled} />
             </div>
           ))}
         </>
@@ -37,12 +39,18 @@ const Steps = ({ steps, isCollapsed, isDisabled }: StepsProps) => {
 
 type StepProps = {
   step: StepType
-  isCollapsed: boolean
+  isDisabled: boolean
 }
 
-const Step = ({ step }: StepProps) => {
+const Step = ({ step, isDisabled }: StepProps) => {
   return (
-    <div className="self-stretch justify-between flex flex-col lg:flex-row items-center border border-Neutral/500 rounded-lg gap-4 lg:gap-[77px] p-4">
+    <div
+      className={`${
+        !isDisabled && !step.isComplete
+          ? "border-Primary/500 shadow-active"
+          : "border-Neutral/500"
+      } flex flex-col lg:flex-row justify-between items-center border rounded-lg gap-4 lg:gap-[77px] p-4`}
+    >
       <div className="flex items-start gap-2">
         <div>
           {step.isComplete ? (
