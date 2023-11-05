@@ -3,6 +3,15 @@
    npm install
    npm run dev
 ```
+
+# How to test with jest
+```
+   npm run test
+```
+
+# Local Node version
+node v16.20.0
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

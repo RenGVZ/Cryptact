@@ -1,6 +1,6 @@
 import { useState } from "react"
 import HeaderDescription from "components/container/HeaderDescription"
-import Steps from "components/container/Steps"
+import { Steps } from "components/container/Steps"
 import { ContentType } from "src/types"
 
 type ContainerProps = {

@@ -12,7 +12,7 @@ type StepsProps = {
   isDisabled: boolean
 }
 
-const Steps = ({ steps, isCollapsed, isDisabled }: StepsProps) => {
+export const Steps = ({ steps, isCollapsed, isDisabled }: StepsProps) => {
   return (
     <div
       className={`${
@@ -37,7 +37,7 @@ type StepProps = {
   isDisabled: boolean
 }
 
-const Step = ({ step, isDisabled }: StepProps) => {
+export const Step = ({ step, isDisabled }: StepProps) => {
   return (
     <div
       className={`${
@@ -47,17 +47,27 @@ const Step = ({ step, isDisabled }: StepProps) => {
       } flex flex-col lg:flex-row justify-between items-center border rounded-lg gap-4 lg:gap-[77px] p-4`}
     >
       <div className="flex items-start gap-2">
-        <div className={`${isDisabled && "opacity-50"}`}>
+        <div className={`${isDisabled ? "opacity-50" : ""}`}>
           {step.isComplete ? (
-            <CheckCircle size={24} color="#38c97c" weight="fill" />
+            <CheckCircle
+              data-testid="check-circle-icon"
+              size={24}
+              color="#38c97c"
+              weight="fill"
+            />
           ) : (
-            <CircleDashed size={24} color="#a7aeb4" />
+            <CircleDashed
+              data-testid="circle-dashed-icon"
+              id="dash"
+              size={24}
+              color="#a7aeb4"
+            />
           )}
         </div>
         <div className="flex flex-col items-start">
           <div
             className={`${
-              isDisabled && "opacity-50"
+              isDisabled ? "opacity-50" : ""
             } flex flex-col pb-0 items-start gap-2`}
           >
             <h1 className="text-Text/Main font-semibold leading-21">
@@ -73,7 +83,7 @@ const Step = ({ step, isDisabled }: StepProps) => {
       </div>
       <button
         className={`${
-          isDisabled && "opacity-50"
+          isDisabled ? "opacity-50" : ""
         } flex justify-center items-center h-8 min-w-fit p-3 gap-2 rounded-4 bg-Primary/500`}
         disabled={isDisabled}
       >
@@ -104,5 +114,3 @@ const StepInfo = ({ info }: { info: string }) => {
     </div>
   )
 }
-
-export default Steps

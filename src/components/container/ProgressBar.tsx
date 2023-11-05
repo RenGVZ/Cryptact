@@ -18,8 +18,12 @@ const ProgressBar = ({ stepCount, completed }: ProgressBarProps) => {
   }, [completed, stepCount])
 
   return (
-    <div className="w-[60px] h-[6px] bg-Neutral/500 rounded-lg">
+    <div
+      data-testid="progress-bar"
+      className="w-[60px] h-[6px] bg-Neutral/500 rounded-lg"
+    >
       <div
+        data-testid="progress-indicator"
         className="h-full bg-Green/500 rounded-lg z-50 transition-all duration-500"
         style={{ width: `${progress}%` }}
       ></div>

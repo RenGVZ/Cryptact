@@ -28,6 +28,7 @@ const QuickAccess = () => {
         <div className="flex flex-row lg:flex-col items-start gap-4">
           {menuItems.items.map((item) => (
             <div
+              data-testid="menu-item"
               key={item.id}
               className="bg-White/50 w-1/2 lg:w-full flex flex-col items-start self-stretch p-4 border border-Primary/100 rounded-lg cursor-pointer"
             >

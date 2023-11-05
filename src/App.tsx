@@ -1,24 +1,29 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Header from "components/Header"
-import AssistantMenu from "src/layouts/AssistantMenu"
+import AssistantMenu from "./layouts/AssistantMenu"
 import QuickAccess from "./components/QuickAccess"
 import AssistantSteps from "./components/AssistantSteps"
 import { DataInterface } from "src/types"
+import axios from "axios"
 
 const App = () => {
   const [data, setData] = useState<DataInterface | null>(null)
 
   const fetchData = async () => {
     try {
-      const res = await fetch("src/data/data.json")
-      const data: DataInterface = await res.json()
-      setData(data)
+      const res = await axios.get("src/data/data.json")
+      if (res && res.data) {
+        const data: DataInterface = await res.data
+        setData(data)
+      }
     } catch (err) {
       console.log("error:", err)
     }
   }
 
-  fetchData()
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <main className="flex flex-col items-start py-4 lg:py-main px-2 lg:px-28 gap-4 lg:gap-8 font-main">

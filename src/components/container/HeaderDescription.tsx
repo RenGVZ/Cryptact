@@ -18,13 +18,41 @@ const HeaderDescription = ({
   const getIcon = (icon: string) => {
     switch (icon) {
       case "UserCircleGear":
-        return <UserCircleGear size={26} color="#4299E1" weight="duotone" />
+        return (
+          <UserCircleGear
+            data-testid="user-circle-gear-icon"
+            size={26}
+            color="#4299E1"
+            weight="duotone"
+          />
+        )
       case "Gear":
-        return <Gear size={26} color="#4299E1" weight="duotone" />
+        return (
+          <Gear
+            data-testid="gear-icon"
+            size={26}
+            color="#4299E1"
+            weight="duotone"
+          />
+        )
       case "ListChecks":
-        return <ListChecks size={26} color="#4299E1" weight="duotone" />
+        return (
+          <ListChecks
+            data-testid="list-checks-icon"
+            size={26}
+            color="#4299E1"
+            weight="duotone"
+          />
+        )
       default:
-        return <UserCircleGear size={26} color="#4299E1" weight="duotone" />
+        return (
+          <UserCircleGear
+            data-testid="user-circle-gear-icon"
+            size={26}
+            color="#4299E1"
+            weight="duotone"
+          />
+        )
     }
   }
 
@@ -46,11 +74,19 @@ const HeaderDescription = ({
             <p className="text-Grey/400 text-sm leading-21 tracking-[-0.14px]">
               {`${completedSteps}`}/{`${content.steps.length}`}ステップ
             </p>
-            <button onClick={handleCollapse}>
+            <button data-testid="collapse-button" onClick={handleCollapse}>
               {isCollapsed ? (
-                <CaretDown size={16} color="#8c959d" />
+                <CaretDown
+                  data-testid="caret-down-button"
+                  size={16}
+                  color="#8c959d"
+                />
               ) : (
-                <CaretUp size={16} color="#8c959d" />
+                <CaretUp
+                  data-testid="caret-up-button"
+                  size={16}
+                  color="#8c959d"
+                />
               )}
             </button>
           </div>
